@@ -31,7 +31,7 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
       </form>
 
       {isRequesting && (<div className="requesting">
-        <span style={{color: '#398DC9'}}>Requesting:</span> <span style={{color: '#5AA2D4'}}>https://api.jikan.moe/v3/search/anime?q={queryRef.current.value}</span>
+        <span style={{color: '#398DC9'}}>Requesting:</span> <span style={{color: '#5AA2D4'}}>https://api.jikan.moe/v3/search/anime?q={encodeURI(queryRef.current.value)}</span>
       </div>)}
 
       <div className="resultsContainer">
