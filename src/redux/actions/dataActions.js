@@ -7,7 +7,6 @@ export const getDataStarted = () => {
 }
 
 export const getDataSuccess = (data) => {
-    console.log(data)
     return {
         type: GET_DATA_SUCCESS,
         payload: data
@@ -30,7 +29,6 @@ export const loadDataStarted = () => {
 }
 
 export const loadDataSuccess = (data) => {
-    console.log(data)
     return {
         type: LOAD_DATA_SUCCESS,
         payload: {

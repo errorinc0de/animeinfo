@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { connect } from 'react-redux'
 import { getData, loadMoreData } from './redux/asyncActions/dataAsyncActions'
 import './App.css'
+import AnimeCards from './components/AnimeCards';
 
 function App({ queryData, lastPage, getData, loadMoreData }) {
 
@@ -9,7 +10,8 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
   const [isRequesting, setIsRequesting] = useState(false)
   const queryRef = useRef(null)
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault()
     updatePageNumber(1)
     setIsRequesting(true)
     getData(queryRef.current.value, pageNumber)
@@ -22,26 +24,20 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
 
   return (
     <div className="App">
-      <div className="search">
-        <input className="searchBox" type="text" placeholder="Enter keywords to search" ref={queryRef}/>
-        <button className="searchButton" onClick={()=>{handleSearch()}}>Go</button>
-      </div>
+      
+      <form className="search" onSubmit={(e)=>handleSearch(e)}>
+        <input className="searchBox" type="text" placeholder="Enter keywords to search" ref={queryRef} required/>
+        <button type="submit" className="searchButton">Go</button>
+      </form>
+
       {isRequesting && (<div className="requesting">
         <span style={{color: '#398DC9'}}>Requesting:</span> <span style={{color: '#5AA2D4'}}>https://api.jikan.moe/v3/search/anime?q={queryRef.current.value}</span>
       </div>)}
+
       <div className="resultsContainer">
-        {queryData && queryData.map((data, index) => {
-          return(
-            <div className="resultCard" key={index}>
-              <a href={data.url} target="_blank" rel="noreferrer">
-                <img src={data.image_url} alt="Anime Poster"/>
-              </a>
-              <div>{data.title}</div>
-            </div>
-          )
-        })
-      }
+        <AnimeCards queryData={queryData} />
       </div>
+
       {lastPage && (pageNumber < lastPage) ? 
         (<div>
           <button className="load-data" onClick={()=>{loadData()}}>Load More...</button>
@@ -51,17 +47,15 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
           </div>
         ) : (
           <div>
-            <button className="load-data">Search something to see your results</button>
+            <button id="des" className="load-data">Search something new to see results</button>
           </div>
         ))
       }
     </div>
   )
-
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     queryData: state.data,
     lastPage: state.lastPage
