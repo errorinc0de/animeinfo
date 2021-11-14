@@ -1,38 +1,94 @@
+body {
+    background: #1C7AC2;
+}
+
 .App {
-  text-align: center;
+    width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search {
+    margin: 20px auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.searchBox, .searchButton {
+    border: 2px solid #4C97CF;
+    background: hsl(206, 69%, 46%);
+    height: 35px;
+    outline: none;
+    color: rgba(255, 255, 255, 0.575);
+    font-size: 18px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.searchBox {
+    border-right: none;
+    padding: 5px 15px;
+    width: 50%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.searchBox::placeholder{
+    color: rgba(255, 255, 255, 0.575);
 }
 
-.App-link {
-  color: #61dafb;
+.searchButton {
+    height: 49px;
+    border-left: none;
+    cursor: pointer;
+    padding-right: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.requesting {
+    font-size: 20px;
+    text-align: center;
+    word-wrap: break;
+    margin: 30px auto;
+}
+
+.resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.resultCard {
+    background: white;
+    color: black;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.resultCard img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 560px;
+    width: 400px;
+}
+
+.resultCard div {
+    display: flex;
+    height: 80px;
+    width: 250px;
+    word-wrap: break;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.load-data{
+    width: 100%;
+    text-align: center;
+    border: 0px;
+    background: transparent;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
 }
