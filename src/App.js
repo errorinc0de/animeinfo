@@ -15,7 +15,7 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
     e.preventDefault()
     updatePageNumber(1)
     setIsRequesting(true)
-    getData(query, pageNumber+1)
+    getData(query, 1)
   }
 
   const loadData = () => {
