@@ -44,14 +44,14 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
       </div>
 
       {lastPage && (pageNumber < lastPage) ? 
-        (<div>
+        (<div className="btn">
           <button className="load-data" onClick={()=>{loadData()}}>Load More...</button>
         </div>) : ((pageNumber === lastPage) ? (
-          <div>
-            <button className="load-data">Looks like you have reached the End</button>
+          <div className="btn">
+            <button className="load-data">Looks like you have reached the end :)</button>
           </div>
         ) : (
-          <div>
+          <div className="btn">
             <button id="des" className="load-data">Search something new to see results</button>
           </div>
         ))

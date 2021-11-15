@@ -93,8 +93,13 @@ body {
     font-weight: bold;
 }
 
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .load-data{
-    width: 95%;
     text-align: center;
     border: 0px;
     background: transparent;
