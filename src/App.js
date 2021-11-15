@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getData, loadMoreData } from './redux/asyncActions/dataAsyncActions'
 import './App.css'
@@ -8,30 +8,35 @@ function App({ queryData, lastPage, getData, loadMoreData }) {
 
   const [pageNumber, updatePageNumber] = useState(1);
   const [isRequesting, setIsRequesting] = useState(false)
-  const queryRef = useRef(null)
+  // const queryRef = useRef(null)
+  const [query, updateQuery] =  useState('');
 
   const handleSearch = (e) => {
     e.preventDefault()
     updatePageNumber(1)
     setIsRequesting(true)
-    getData(queryRef.current.value, pageNumber)
+    getData(query, pageNumber+1)
   }
 
   const loadData = () => {
-    loadMoreData(queryRef.current.value, pageNumber+1)
+    loadMoreData(query, pageNumber + 1)
     updatePageNumber(pageNumber + 1)
   }
+
+  useEffect(()=>{
+    updatePageNumber(0)
+  }, [query])
 
   return (
     <div className="App">
       
       <form className="search" onSubmit={(e)=>handleSearch(e)}>
-        <input className="searchBox" type="text" placeholder="Enter keywords to search" ref={queryRef} required/>
+        <input className="searchBox" type="text" placeholder="Enter keywords to search" value={query} onChange={(e)=>updateQuery(e.target.value)} required/>
         <button type="submit" className="searchButton">Go</button>
       </form>
 
       {isRequesting && (<div className="requesting">
-        <span style={{color: '#398DC9'}}>Requesting:</span> <span style={{color: '#5AA2D4'}}>https://api.jikan.moe/v3/search/anime?q={encodeURI(queryRef.current.value)}</span>
+        <span style={{color: '#398DC9'}}>Requesting:</span> <span style={{color: '#5AA2D4'}}>https://api.jikan.moe/v3/search/anime?q={encodeURI(query)}</span>
       </div>)}
 
       <div className="resultsContainer">
