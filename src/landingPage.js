@@ -23,8 +23,13 @@ function LandingPage({ queryData, lastPage, getData, loadMoreData }) {
   }
 
   const loadData = () => {
-    loadMoreData(query, pageNumber + 1)
-    updatePageNumber(pageNumber + 1)
+    if(pageNumber == 0){
+      loadMoreData(query, 2)
+      updatePageNumber(2)
+    } else {
+      loadMoreData(query, pageNumber + 1)
+      updatePageNumber(pageNumber + 1)
+    }
   }
 
   useEffect(()=>{
@@ -33,6 +38,7 @@ function LandingPage({ queryData, lastPage, getData, loadMoreData }) {
 
   useEffect(()=>{
     updateQ(window.location.hash.substring(5))
+    updatePageNumber(1)
   }, [window.location.hash.substring(5)])
 
   useEffect(()=>{
