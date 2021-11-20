@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/animeinfo/static/css/main.2e2a8ec0.chunk.css",
-    "main.js": "/animeinfo/static/js/main.4a7ecc12.chunk.js",
-    "main.js.map": "/animeinfo/static/js/main.4a7ecc12.chunk.js.map",
+    "main.js": "/animeinfo/static/js/main.5aaf137c.chunk.js",
+    "main.js.map": "/animeinfo/static/js/main.5aaf137c.chunk.js.map",
     "runtime-main.js": "/animeinfo/static/js/runtime-main.f2efd05c.js",
     "runtime-main.js.map": "/animeinfo/static/js/runtime-main.f2efd05c.js.map",
     "static/js/2.23170535.chunk.js": "/animeinfo/static/js/2.23170535.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f2efd05c.js",
     "static/js/2.23170535.chunk.js",
     "static/css/main.2e2a8ec0.chunk.css",
-    "static/js/main.4a7ecc12.chunk.js"
+    "static/js/main.5aaf137c.chunk.js"
   ]
 }
